@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>High Quality Websites — Built for Your Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #FAFAFA;
+      --white:    #FFFFFF;
+      --ink:      #111827;
+      --mid:      #374151;
+      --silver:   #6B7280;
+      --border:   #E5E7EB;
+      --accent:   #111827;
+      --accent-h: #374151;
+      --card:     #FFFFFF;
+      --card-bg:  #F3F4F6;
+      --tag:      #F9FAFB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(250,250,250,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-wordmark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .nav-cta {
+      background: var(--ink);
+      color: #fff;
+      border: none; border-radius: 8px;
+      padding: 0.55rem 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem; font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--accent-h); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(17,24,39,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--tag);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--silver);
+      margin-bottom: 2rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #22C55E;
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      max-width: 14ch;
+      margin: 0 auto 1.5rem;
+      color: var(--ink);
+    }
+    h1 em {
+      font-style: normal;
+      position: relative;
+      display: inline-block;
+    }
+    h1 em::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 4px; right: 0;
+      height: 3px;
+      background: var(--ink);
+      border-radius: 2px;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--silver);
+      max-width: 46ch;
+      margin: 0 auto 3rem;
+      font-weight: 400;
+      line-height: 1.75;
+    }
+
+    /* ── FORM ── */
+    .form-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 460px;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .form-wrap h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .form-wrap p {
+      color: var(--silver);
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    .field-row {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .field-row input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .field-row input::placeholder { color: #9CA3AF; }
+    .field-row input:focus { border-color: var(--ink); }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--ink);
+      color: #fff;
+      border: none; border-radius: 10px;
+      padding: 0.9rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: -0.01em;
+    }
+    .submit-btn:hover {
+      background: var(--accent-h);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(17,24,39,0.2);
+    }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .success-msg { display: none; text-align: center; padding: 1rem 0 0.5rem; }
+    .success-msg .check { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .success-msg h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--ink); }
+    .success-msg p { color: var(--silver); font-size: 0.9rem; }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--silver);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .features > h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      max-width: 22ch;
+      margin-bottom: 3rem;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .feature-card:hover {
+      border-color: var(--ink);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .feature-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+    .feature-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: var(--ink);
+    }
+    .feature-card p { font-size: 0.875rem; color: var(--silver); line-height: 1.7; }
+
+    /* ── HOW ── */
+    .how {
+      padding: 5rem 1.5rem;
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .how > h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 3.5rem;
+      color: var(--ink);
+    }
+    .steps { display: flex; flex-direction: column; gap: 0; text-align: left; position: relative; }
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 21px; top: 28px; bottom: 28px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--ink), transparent);
+      opacity: 0.15;
+    }
+    .step { display: flex; gap: 1.5rem; padding: 1.5rem 0; }
+    .step-num {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .step-body h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.3rem;
+      color: var(--ink);
+    }
+    .step-body p { font-size: 0.875rem; color: var(--silver); line-height: 1.7; }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial-section {
+      padding: 5rem 1.5rem;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .testimonial-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    blockquote {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.5;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+    blockquote::before { content: '\201C'; color: var(--silver); }
+    blockquote::after  { content: '\201D'; color: var(--silver); }
+    .author { display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+    .author-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.9rem; color: #fff;
+    }
+    .author-info strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+    .author-info span { font-size: 0.8rem; color: var(--silver); }
+
+    /* ── FINAL CTA ── */
+    .final-cta { padding: 6rem 1.5rem; text-align: center; max-width: 700px; margin: 0 auto; }
+    .final-cta h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+    }
+    .final-cta p { color: var(--silver); margin-bottom: 2.5rem; font-size: 1.05rem; }
+    .final-cta a {
+      display: inline-block;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .final-cta a:hover {
+      background: var(--accent-h);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(17,24,39,0.2);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 2.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      background: var(--white);
+    }
+    footer p { font-size: 0.8rem; color: var(--silver); }
+
+    /* ── MODALS ── */
+    .modal {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
+      overflow-y: auto;
+    }
+    .modal-inner {
+      max-width: 680px; margin: 4rem auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+    .modal-close {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: none; border: none;
+      color: var(--silver); font-size: 1.4rem; cursor: pointer;
+    }
+    .modal-inner h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    .modal-inner h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem; font-weight: 600;
+      color: var(--ink); margin: 1.2rem 0 0.4rem;
+    }
+    .modal-inner p {
+      font-size: 0.875rem; color: var(--silver); line-height: 1.75;
+    }
+    .modal-inner a { color: var(--ink); }
+
+    /* ── COOKIE BANNER ── */
+    #cookie-banner {
+      display: none; position: fixed;
+      bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 998;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      max-width: 560px; width: calc(100% - 3rem);
+      align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    #cookie-banner p { color: var(--silver); font-size: 0.8rem; line-height: 1.6; margin: 0; flex: 1; min-width: 200px; }
+    #cookie-banner a { color: var(--ink); }
+    .cookie-btns { display: flex; gap: 0.75rem; flex-shrink: 0; }
+    .btn-decline {
+      background: none; border: 1px solid var(--border);
+      color: var(--silver); padding: 0.5rem 1rem;
+      border-radius: 8px; cursor: pointer;
+      font-size: 0.8rem; font-family: 'Inter', sans-serif;
+    }
+    .btn-accept {
+      background: var(--ink); border: none; color: #fff;
+      padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;
+      font-size: 0.8rem; font-family: 'Inter', sans-serif; font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .form-wrap { padding: 1.75rem 1.25rem; border-radius: 16px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-wordmark">webcraft.</div>
+  <a href="#contact" class="nav-cta">Get a website</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge"><span class="badge-dot"></span> Available now — spots are limited</div>
+  <h1>High quality websites are <em>born here.</em></h1>
+  <p class="hero-sub">Professional, fast, and mobile-ready websites for small businesses — at a flat rate, with no technical headaches.</p>
+
+  <!-- FORM -->
+  <div class="form-wrap" id="contact">
+    <div id="form-content">
+      <h2>Get your website</h2>
+      <p>Fill in the form and we'll get back to you within 24 hours with a design proposal.</p>
+      <div class="field-row">
+        <input type="text"  id="name-input"    placeholder="Your name"             autocomplete="name" />
+        <input type="email" id="email-input"   placeholder="Email address"         autocomplete="email" />
+        <input type="text"  id="company-input" placeholder="Business name & type"  />
+      </div>
+      <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">Send request →</button>
+    </div>
+    <div class="success-msg" id="success-msg">
+      <div class="check">✅</div>
+      <h3>Request received!</h3>
+      <p>We'll reach out within 24 hours with a design proposal for your website.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-label">What you get</div>
+  <h2>Everything your business needs to shine online</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3>Modern design</h3>
+      <p>A professional look tailored to your industry and brand — first impressions that actually stick.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <h3>Mobile-ready</h3>
+      <p>Your site looks perfect on every device — phone, tablet, and desktop.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Fast delivery</h3>
+      <p>Your website is ready in days, not weeks. No waiting, no back-and-forth delays.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📍</div>
+      <h3>Google Maps integration</h3>
+      <p>Customers find you easily — location, hours, and contact info always front and center.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💵</div>
+      <h3>Flat rate pricing</h3>
+      <p>No hidden fees. You know exactly what you're paying upfront — from $110 to $220.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛠️</div>
+      <h3>Revisions included</h3>
+      <p>Not happy with a detail? We adjust the design until you're fully satisfied — no extra charge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="section-label">How it works</div>
+  <h2>Your website, ready in days</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Send a request</h3>
+        <p>Fill in the form with your business name and type. We'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Review your design proposal</h3>
+        <p>We build a demo tailored to your business — completely free to review, no commitment required.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Go live</h3>
+        <p>Once you approve and pay, your site goes online. Your customers can find you immediately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section">
+  <div class="testimonial-inner">
+    <blockquote>Within a week we had a professional website that looked better than we ever expected. Customers now find us on Google without any effort on our end.</blockquote>
+    <div class="author">
+      <div class="author-avatar">MH</div>
+      <div class="author-info">
+        <strong>Mark H.</strong>
+        <span>Owner, Mark's Auto Repair — Chicago, IL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Your business deserves to be found online</h2>
+  <p>Contact us today and have a professional website live within days.</p>
+  <a href="#contact">Get your website →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="nav-wordmark">webcraft.</div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;text-align:center">
+    <p>📧 <a href="mailto:webdev4812@proton.me" style="color:var(--silver);text-decoration:none">webdev4812@proton.me</a></p>
+    <p>© 2026 · <a href="#" onclick="openModal('privacy')" style="color:var(--silver);text-decoration:none">Privacy Policy</a> · <a href="#" onclick="openModal('terms')" style="color:var(--silver);text-decoration:none">Terms of Service</a> · <a href="#" onclick="openCookies()" style="color:var(--silver);text-decoration:none">Cookie Settings</a></p>
+  </div>
+</footer>
+
+<!-- PRIVACY MODAL -->
+<div class="modal" id="modal-privacy">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal('privacy')">✕</button>
+    <h2>Privacy Policy</h2>
+    <p><strong>Last updated:</strong> June 2026</p>
+    <h3>1. Who we are</h3>
+    <p>We are an independent web design service. Contact: <a href="mailto:webdev4812@proton.me">webdev4812@proton.me</a></p>
+    <h3>2. What data we collect</h3>
+    <p>When you submit the contact form, we collect your name, email address, and business name. This data is used solely to respond to your inquiry and deliver the requested service.</p>
+    <h3>3. How we use your data</h3>
+    <p>We use your data only for communication related to your order. We do not sell, share, or use your data for marketing purposes without your explicit consent.</p>
+    <h3>4. Cookies</h3>
+    <p>This site uses only technical cookies necessary for the site to function. We do not use tracking or advertising cookies without your consent.</p>
+    <h3>5. Your rights</h3>
+    <p>You have the right to access, correct, and delete your personal data at any time. Contact us at <a href="mailto:webdev4812@proton.me">webdev4812@proton.me</a> for any requests.</p>
+    <h3>6. Data retention</h3>
+    <p>We retain your data only as long as necessary to provide the service, and no longer than 2 years from our last communication.</p>
+  </div>
+</div>
+
+<!-- TERMS MODAL -->
+<div class="modal" id="modal-terms">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal('terms')">✕</button>
+    <h2>Terms of Service</h2>
+    <p><strong>Last updated:</strong> June 2026</p>
+    <h3>1. Service</h3>
+    <p>We provide website design and development services for small and medium businesses. Each project is agreed upon individually via email.</p>
+    <h3>2. Orders & payment</h3>
+    <p>An order is confirmed after written agreement via email and payment. The price is agreed upfront and is fixed for the agreed scope of work.</p>
+    <h3>3. Delivery</h3>
+    <p>Delivery timelines are agreed individually per project. We reserve the right to adjust timelines in unforeseen circumstances, with advance notice to the client.</p>
+    <h3>4. Revisions</h3>
+    <p>Reasonable design adjustments within the agreed scope are included. Significant changes outside the agreed scope may be subject to an additional fee.</p>
+    <h3>5. Ownership</h3>
+    <p>Upon full payment, the client becomes the owner of the delivered website. We reserve the right to display the project in our portfolio unless the client explicitly requests otherwise.</p>
+    <h3>6. Liability</h3>
+    <p>We are not liable for losses arising from the use or inability to use the delivered website. The client is responsible for the accuracy of the content they provide.</p>
+    <h3>7. Contact</h3>
+    <p>For any questions: <a href="mailto:webdev4812@proton.me">webdev4812@proton.me</a></p>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <p>We use essential cookies to keep this site running. <a href="#" onclick="openModal('privacy')">Learn more</a></p>
+  <div class="cookie-btns">
+    <button class="btn-decline" onclick="declineCookies()">Decline optional</button>
+    <button class="btn-accept"  onclick="acceptCookies()">Accept</button>
+  </div>
+</div>
+
+<script>
+  // Form submission
+  async function handleSubmit() {
+    const name    = document.getElementById('name-input').value.trim();
+    const email   = document.getElementById('email-input').value.trim();
+    const company = document.getElementById('company-input').value.trim();
+
+    if (!name)  { document.getElementById('name-input').focus(); return; }
+    if (!email || !email.includes('@')) { document.getElementById('email-input').focus(); return; }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '91366b6d-28dd-4017-9d78-ea44b1e266f8',
+          subject:    'New website request',
+          name, email,
+          company: company || 'Not provided',
+          from_name: 'Website Contact Form'
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('success-msg').style.display  = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send request →';
+        alert('Something went wrong. Please email us directly at webdev4812@proton.me');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Send request →';
+      alert('Something went wrong. Please email us directly at webdev4812@proton.me');
+    }
+  }
+
+  // Modals
+  function openModal(type) {
+    document.getElementById('modal-' + type).style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(type) {
+    document.getElementById('modal-' + type).style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  ['privacy','terms'].forEach(t => {
+    document.getElementById('modal-' + t).addEventListener('click', function(e) {
+      if (e.target === this) closeModal(t);
+    });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal('privacy'); closeModal('terms'); }
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href="#contact"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Cookies
+  function openCookies()   { document.getElementById('cookie-banner').style.display = 'flex'; }
+  function acceptCookies() { localStorage.setItem('cookies', 'accepted'); document.getElementById('cookie-banner').style.display = 'none'; }
+  function declineCookies(){ localStorage.setItem('cookies', 'declined'); document.getElementById('cookie-banner').style.display = 'none'; }
+  window.addEventListener('load', () => {
+    if (!localStorage.getItem('cookies')) {
+      setTimeout(() => { document.getElementById('cookie-banner').style.display = 'flex'; }, 1500);
+    }
+  });
+</script>
+</body>
+</html>
